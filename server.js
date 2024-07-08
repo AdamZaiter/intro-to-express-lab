@@ -17,5 +17,18 @@ app.get('/greetings/:username', (req, res) => {
     const username = req.params.username;
     res.send(`Hello there, ${username}`)
 }) 
+// Defined the route that matches /greetings/:username
+// extract username from URL
+// send the response with the username I write in the url
 
+// Roll the dice
+app.get('/roll/:number', (req, res) => {
+    const number = req.params.number;
+    if (isNaN(number)) {
+        res.send("You must specify a number.");
+    } else {
+        const roll = Math.floor(Math.random() * (parseInt(number) + 1));
+        res.send(`You rolled a ${roll}.`);
+    }
+});
 
